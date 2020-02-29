@@ -10,6 +10,7 @@ static void err(const char *prog);
 
 int main(int argc, char *argv[])
 {
+  int i;
   int opt;
   long nlines = DEFAULT_NLINES;
   while ((opt = getopt(argc, argv, "n:")) != -1) {
@@ -24,11 +25,11 @@ int main(int argc, char *argv[])
   }
   if (optind == argc) {
     do_head(NULL, nlines);
-  } else {
-    int i;
-    for (i = optind; i < argc; ++i) {
-      do_head(argv[i], nlines);
-    }
+    return 0;
+  }
+
+  for (i = optind; i < argc; ++i) {
+    do_head(argv[i], nlines);
   }
   return 0;
 }
