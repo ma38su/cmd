@@ -1,6 +1,6 @@
 CFLAGS=-Wall -std=c11 -g -static
 
-all: cat fcat wc head tail
+all: cat fcat wc head tail ls
 
 cat: cat.c
 	$(CC) -o cat cat.c $(LDFLAGS)
@@ -15,7 +15,11 @@ head: head.c
 tail: tail.c
 	$(CC) -o tail tail.c $(LDFLAGS)
 
+ls: ls.c
+	$(CC) -o ls ls.c $(LDFLAGS)
+
+
 clean:
-	rm -f cat fcat wc head tail *.s *.o *~ tmp/* .*.c
+	rm -f cat fcat wc head tail ls *.s *.o *~ tmp/* .*.c
 
 .PHONY: test clean

@@ -1,6 +1,7 @@
+*.o
 cat
 fcat
 wc
 head
 tail
-*.o
+ls
