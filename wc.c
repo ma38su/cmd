@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 static void die(const char *s);
-static int do_wcl(const char *path);
+static long do_lc(const char *path);
 static void err(const char *prog);
 
 int main(int argc, char *argv[])
@@ -24,10 +24,11 @@ int main(int argc, char *argv[])
     int i;
     int l;
     if (argc == optind) {
-      printf("%7d\n", do_wcl(NULL));
+      printf("%7ld\n", do_lc(NULL));
     } else {
       for (i = optind; i < argc; ++i) {
-        printf("%7d %s\n", do_wcl(argv[i]), argv[i]);
+        char *path = argv[i];
+        printf("%7ld %s\n", do_lc(path), path);
       }
     }
   } else {
@@ -42,9 +43,9 @@ static void err(const char *prog) {
   exit(1);
 }
 
-static int do_wcl(const char *path) {
+static long do_lc(const char *path) {
   FILE *f;
-  int l = 0;
+  long l = 0;
   int c;
   if (path) {
     f = fopen(path, "r");

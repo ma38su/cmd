@@ -41,7 +41,6 @@ static void err(const char *prog) {
 static void do_head(const char *path, long nlines)
 {
   int c;
-  char ch;
   FILE *f;
   if (path) {
     f = fopen(path, "r");
@@ -50,7 +49,6 @@ static void do_head(const char *path, long nlines)
   }
   if (!f) die(path);
   while ((c = fgetc(f)) != EOF) {
-    ch = (char) c;
     if (putchar(c) < 0) die(path);
     if (c == '\n' && --nlines == 0) {
       break;
