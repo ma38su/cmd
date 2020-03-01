@@ -1,6 +1,6 @@
 CFLAGS=-Wall -std=c11 -g -static
 
-all: cat fcat wc head tail ls
+all: cat fcat wc head tail ls mkdir
 
 cat: cat.c
 	$(CC) -o cat cat.c $(LDFLAGS)
@@ -17,6 +17,9 @@ tail: tail.c
 
 ls: ls.c
 	$(CC) -o ls ls.c $(LDFLAGS)
+
+mkdir: mkdir.c
+	$(CC) -o mkdir mkdir.c $(LDFLAGS)
 
 
 clean:

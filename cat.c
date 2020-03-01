@@ -28,7 +28,8 @@ int main(int argc, char *argv[])
   }
 
   for (i = optind; i < argc; ++i) {
-    do_cat(argv[i]);
+    char *path = argv[1];
+    do_cat(path);
   }
   return 0;
 }
